@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1> Thank you for registering! </h1>
+    <h4> Here are your credentials: </h4>
+    {% for k,v in credentials.items() %}
+        <p> {{ k }} is {{ v }} </p>
+    {% endfor %}
+    <a href="/">Go back to home page</a>
+{% endblock %}

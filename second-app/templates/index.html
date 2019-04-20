@@ -1,0 +1,26 @@
+<!-- inherit layout.html template -->
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if username %}
+        <p> Hey {{ username }}! How's it going?</p>
+        <a href="/logout">Would you like to logout?</a>
+
+        <h4> Tell us what's on your mind </h4>
+        <form action="/" method="post">
+            <input name="status_update" type="textarea">
+            <input type="submit" value="Post It!">
+        </form>
+
+        <h4> See what was on your mind </h4>
+        {% for status in statuses %}
+            <p> {{ status["message"] }} </p>
+            <p> Posted By: {{ status["author"] }} </p>
+            <p> Posted At: {{ status["time"] }} </p>
+        {% endfor %}
+
+    {% else %}
+        <p> Hey there! How's it going? </p>
+        <a href="/register"> Want to Register?</a> or <a href="/login">Login</a>
+    {% endif %}
+{% endblock %}
